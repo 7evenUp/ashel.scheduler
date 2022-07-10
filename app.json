@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ashel.scheduler",
-    "slug": "ashel.scheduler",
+    "name": "ashel_scheduler",
+    "slug": "ashel_scheduler",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
