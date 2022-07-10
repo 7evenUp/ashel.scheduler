@@ -1,11 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Dimensions, StyleSheet, Text } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { BackgroundClipPath } from '../../components'
 
 const IdeasScreen = () => {
+  const {width, height} = Dimensions.get('window')
   return (
-    <View style={styles.container}>
-      <Text>Пришла идея? Запиши</Text>
-    </View>
+    <>
+      <BackgroundClipPath backgroundColor='#FEF279' angle='left'/>
+      <SafeAreaView style={styles.container}>
+        <Text style={styles.text}>Пришла идея? Запиши</Text>
+        <Text style={styles.text}>Width: {width}</Text>
+        <Text style={styles.text}>Height: {height}</Text>
+      </SafeAreaView>
+    </>
   )
 }
 
@@ -14,5 +21,9 @@ export default IdeasScreen
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  text: {
+    color: 'white',
+    fontSize: 24
   }
 })

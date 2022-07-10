@@ -1,0 +1,1 @@
+export { default as BackgroundClipPath } from './BackgroundClipPath/BackgroundClipPath'
