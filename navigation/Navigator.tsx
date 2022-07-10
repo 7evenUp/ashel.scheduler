@@ -1,43 +1,61 @@
-import { StyleSheet, Text, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { IdeasScreen, GoalsScreen } from '../screens'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
+import { useTheme } from '@shopify/restyle'
+import { IdeasScreen, GoalsScreen, SettingsScreen } from '../screens'
+import { palette, Theme } from '../theme/default'
 
 const Tab = createBottomTabNavigator()
 
 const Navigator = () => {
+  const theme = useTheme<Theme>()
+
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName: 'bulb-outline' | 'list-outline' | '' = 'bulb-outline'
-  
-            if (route.name === 'ideas') iconName = 'bulb-outline' 
-            else if (route.name === 'goals') iconName = 'list-outline'
-  
-            return <Ionicons name={iconName} size={30} color={color} />;
-          },
           tabBarHideOnKeyboard: true,
-          tabBarActiveTintColor: '#7DD0FF',
-          tabBarInactiveTintColor: '#F1F1F1',
-          tabBarStyle: { backgroundColor: '#2C2C2C', borderTopColor: '#212121', paddingVertical: 0 },
+          tabBarInactiveTintColor: palette.whiteDark,
+          tabBarStyle: {
+            backgroundColor: palette.blackLight,
+            borderTopColor: palette.black,
+            paddingVertical: 0
+          },
           headerShown: false,
           tabBarShowLabel: false
         })}
         sceneContainerStyle={{
-          backgroundColor: '#212121',
+          backgroundColor: theme.colors.mainBackground,
           flex: 1,
         }}
       >
-        <Tab.Screen name='ideas' component={IdeasScreen} />
-        <Tab.Screen name='goals' component={GoalsScreen} />
+        <Tab.Screen
+          name='ideas'
+          component={IdeasScreen}
+          options={{
+            tabBarIcon: ({ color }) => <Ionicons name={'bulb-outline'} size={30} color={color} />,
+            tabBarActiveTintColor: palette.yellow,
+          }}
+        />
+        <Tab.Screen
+          name='goals'
+          component={GoalsScreen}
+          options={{
+            tabBarIcon: ({ color }) => <Ionicons name={'list-outline'} size={40} color={color} />,
+            tabBarActiveTintColor: palette.red,
+          }}
+        />
+        <Tab.Screen
+          name='settings'
+          component={SettingsScreen}
+          options={{
+            tabBarIcon: ({ color }) => <Ionicons name={'settings-outline'} size={30} color={color} />,
+            tabBarActiveTintColor: palette.green,
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   )
 }
 
 export default Navigator
-
-const styles = StyleSheet.create({})
