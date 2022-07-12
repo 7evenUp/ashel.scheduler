@@ -18,7 +18,10 @@ const theme = createTheme({
     mainSubBackground: palette.blackLight,
     
     mainText: palette.white,
-    supportText: palette.grey
+    supportText: palette.grey,
+    
+    shadow: palette.black,
+    accentShadow: palette.blue
   },
   spacing: {
     s: 8,
@@ -52,6 +55,9 @@ export const lightTheme: Theme = {
     ...theme.colors,
     mainBackground: palette.white,
     mainSubBackground: palette.whiteDark,
-    mainText: palette.black
+
+    mainText: palette.black,
+
+    shadow: palette.whiteDark
   }
 }
