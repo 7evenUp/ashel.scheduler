@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { useTheme } from '@shopify/restyle'
 import { IdeasScreen, GoalsScreen, SettingsScreen } from '../screens'
 import { palette, Theme } from '../theme/default'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
 const Tab = createBottomTabNavigator()
 
