@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { BackgroundClipPath } from '../../components'
-import IdeasTabs from './IdeasTabs'
-import { palette } from '../../theme/default'
+import { IdeasTabs } from './IdeasTabs'
+import { palette, Text } from '../../theme/default'
 
 const IdeasScreen = () => {
   return (
@@ -10,8 +10,8 @@ const IdeasScreen = () => {
       <BackgroundClipPath backgroundColor={palette.yellow} angle='left'/>
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.text}>Пришла идея?</Text>
-          <Text style={styles.text}>Запиши</Text>
+          <Text variant="hero">Пришла идея?</Text>
+          <Text variant="hero">Запиши</Text>
         </View>
         <IdeasTabs />
       </SafeAreaView>

@@ -1,20 +1,10 @@
 import { Dimensions, StyleSheet, Text } from 'react-native'
-import React from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { useTheme } from '@shopify/restyle'
-import { Theme } from '../../theme/default'
-
-const A = () => {
-  return <Text style={{backgroundColor: 'red'}}>ABC</Text>
-}
-
-const B = () => {
-  return <Text>BAC</Text>
-}
-
-const C = () => {
-  return <Text>CAB</Text>
-}
+import MyIdeasTab from './MyIdeasTab/MyIdeasTab'
+import StreamTab from './StreamTab/StreamTab'
+import NewTab from './NewTab/NewTab'
+import { Theme } from '../../../theme/default'
 
 const TopTab = createMaterialTopTabNavigator()
 
@@ -38,7 +28,9 @@ const IdeasTabs = () => {
           justifyContent: 'center',
           alignSelf: 'center',
           marginVertical: theme.spacing.xl,
-          backgroundColor: theme.colors.mainSubBackground
+          backgroundColor: theme.colors.mainSubBackground,
+          elevation: 0, // remove shadow on Android
+          shadowOpacity: 0, // remove shadow on iOS
         },
         tabBarContentContainerStyle: {
           justifyContent: 'center',
@@ -67,12 +59,13 @@ const IdeasTabs = () => {
         }
       }}
       sceneContainerStyle={{
-        backgroundColor: 'rgba(0,0,0,0)'
+        backgroundColor: 'rgba(0,0,0,0)',
+        paddingHorizontal: HORIZONTAL_MARGIN
       }}
     >
-      <TopTab.Screen name="Мои идеи" component={A}/>
-      <TopTab.Screen name="Поток мыслей" component={B}/>
-      <TopTab.Screen name="Новая +" component={C}/>
+      <TopTab.Screen name="Мои идеи" component={MyIdeasTab}/>
+      <TopTab.Screen name="Поток мыслей" component={StreamTab}/>
+      <TopTab.Screen name="Новая +" component={NewTab}/>
     </TopTab.Navigator>
   )
 }

@@ -1,4 +1,4 @@
-import { createText, createBox, createTheme } from '@shopify/restyle'
+import { createText, createBox, createTheme, shadow } from '@shopify/restyle'
 
 export const palette = {
   blue: '#7DD0FF',
@@ -16,12 +16,19 @@ const theme = createTheme({
   colors: {
     mainBackground: palette.black,
     mainSubBackground: palette.blackLight,
+
+    cardBackground: palette.blackLight,
     
     mainText: palette.white,
     supportText: palette.grey,
     
     shadow: palette.black,
-    accentShadow: palette.blue
+    accentShadow: palette.blue,
+
+    heroColor: palette.white,
+    heroShadow: palette.black,
+
+    black: '#000'
   },
   spacing: {
     s: 8,
@@ -36,9 +43,27 @@ const theme = createTheme({
     tablet: 768,
   },
   textVariants: {
+    hero: {
+      fontFamily: 'Inter-Bold',
+      fontSize: 24,
+      color: 'heroColor',
+      textShadowColor: 'heroShadow',
+      textShadowOffset: { width: 0, height: 0 },
+      textShadowRadius: 1
+    },
     header: {
       fontFamily: 'Inter-Regular',
       fontSize: 24,
+      color: 'mainText'
+    },
+    card: {
+      fontFamily: 'Inter-Regular',
+      fontSize: 12,
+      color: 'mainText'
+    },
+    defaults: {
+      fontFamily: 'Inter-Regular',
+      fontSize: 14,
       color: 'mainText'
     }
   }
@@ -56,8 +81,10 @@ export const lightTheme: Theme = {
     mainBackground: palette.white,
     mainSubBackground: palette.whiteDark,
 
+    cardBackground: palette.white,
+
     mainText: palette.black,
 
-    shadow: palette.whiteDark
+    shadow: palette.black
   }
 }
