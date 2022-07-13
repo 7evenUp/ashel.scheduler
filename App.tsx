@@ -1,6 +1,6 @@
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import * as NavigationBar from 'expo-navigation-bar'
-import Navigator from './navigation/Navigator'
+import AppNavigator from './navigation/AppNavigator'
 import ContextProvider from './theme/ContextProvider'
 import { palette } from './theme/default'
 import Theme from './theme/Theme'
@@ -8,7 +8,7 @@ import { useFonts } from 'expo-font'
 
 // 1. Complete theme            |+|
 // 2. Create Setting Screen     |+|
-// 3. Create Top Tabs Navigator |-|
+// 3. Create Top Tabs Navigator |+|
 
 const fonts = {
   'Inter-Regular': require('./assets/fonts/Inter-Regular.ttf'),
@@ -25,7 +25,7 @@ export default function App() {
     <ContextProvider>
       <Theme>
         <SafeAreaProvider>
-          <Navigator />
+          <AppNavigator />
         </SafeAreaProvider>
       </Theme>
     </ContextProvider>

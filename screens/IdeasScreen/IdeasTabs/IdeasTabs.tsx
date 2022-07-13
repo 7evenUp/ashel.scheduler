@@ -5,8 +5,9 @@ import MyIdeasTab from './MyIdeasTab/MyIdeasTab'
 import StreamTab from './StreamTab/StreamTab'
 import NewTab from './NewTab/NewTab'
 import { Theme } from '../../../theme/default'
+import { IdeasTabRoutes } from '../../../navigation/types'
 
-const TopTab = createMaterialTopTabNavigator()
+const TopTab = createMaterialTopTabNavigator<IdeasTabRoutes>()
 
 const { width } = Dimensions.get('window')
 const HORIZONTAL_MARGIN = 12
@@ -62,9 +63,9 @@ const IdeasTabs = () => {
         backgroundColor: 'rgba(0,0,0,0)'
       }}
     >
-      <TopTab.Screen name="Мои идеи" component={MyIdeasTab}/>
-      <TopTab.Screen name="Поток мыслей" component={StreamTab}/>
-      <TopTab.Screen name="Новая +" component={NewTab}/>
+      <TopTab.Screen name="MyIdeas" component={MyIdeasTab} options={{tabBarLabel: 'Мои идеи'}} />
+      <TopTab.Screen name="Stream" component={StreamTab} options={{tabBarLabel: 'Поток мыслей'}} />
+      <TopTab.Screen name="New" component={NewTab} options={{tabBarLabel: 'Новая +'}} />
     </TopTab.Navigator>
   )
 }

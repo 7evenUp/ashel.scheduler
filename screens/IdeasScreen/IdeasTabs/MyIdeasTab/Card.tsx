@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native'
 import React from 'react'
 import theme, { Box, Text, Theme } from '../../../../theme/default'
-import { backgroundColor, useTheme } from '@shopify/restyle'
+import { useTheme } from '@shopify/restyle'
 
 type CardProps = {
   content: string,
