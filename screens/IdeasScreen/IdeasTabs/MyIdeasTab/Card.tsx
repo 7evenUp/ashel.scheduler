@@ -4,11 +4,15 @@ import theme, { Box, Text, Theme } from '../../../../theme/default'
 import { backgroundColor, useTheme } from '@shopify/restyle'
 
 type CardProps = {
-  text?: string
+  content: string,
+  title: string,
+  date: string
 }
 
-const Card = ({text}: CardProps) => {
+const Card = ({ content, title, date }: CardProps) => {
   const theme = useTheme<Theme>()
+  const slicedContent = content.length > 170 ? `${content.slice(0, 170)}...` : content
+  const slicedTitle = title.length > 40 ? `${title.slice(0, 39)}...` : title
 
   return (
     <View style={styles.container}>
@@ -22,11 +26,11 @@ const Card = ({text}: CardProps) => {
         borderRadius={20}
         style={styles.cardWrapper}
       >
-        <Text variant="card">Веб-приложение на React. Отслеживает передвижения всех друзей. Можно выбрать друга и создать кратчайший до него маршрут. {text}</Text>
+        <Text variant="card">{slicedContent}</Text>
       </Box>
-      <Box mt="s">
-        <Text>Web-приложение для отслеживания друзей</Text>
-        <Text>07.07.2022</Text>
+      <Box mt="s" alignItems="center" width={"95%"}>
+        <Text variant="cardTitle" textAlign="center">{slicedTitle}</Text>
+        <Text variant="cardDate">{date}</Text>
       </Box>
     </View>
   )
@@ -38,14 +42,13 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
     flex: 0,
     flexBasis: '48%',
     justifyContent: 'space-between',
-    backgroundColor: 'lightgreen',
     marginBottom: 24,
   },
   cardWrapper: {
-    marginBottom: 0,
-    height: 160
+    height: 195
   }
 })

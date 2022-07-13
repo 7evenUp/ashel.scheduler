@@ -1,15 +1,46 @@
-import { StyleSheet, View } from 'react-native'
+import { Dimensions, ScrollView, StyleSheet, View } from 'react-native'
 import React from 'react'
 import Card from './Card'
+import { useTheme } from '@shopify/restyle'
+import theme, { Theme } from '../../../../theme/default'
+
+const ideas = [
+  {
+    id: 0,
+    content: 'Веб-приложение на React. Отслеживает передвижения всех друзей. Можно выбрать друга и создать кратчайший до него маршрут.',
+    title: 'Web-приложение для отслеживания друзей',
+    date: '07.07.2022'
+  },
+  {
+    id: 1,
+    content: 'Выкладывать видео уроки. Регистрация пользователей. VIP-подписка (Преимум тренировки, план питания, и т.д.) Возможность создания собственных тренировок. Тренировки может добавлять каждый. Далее тренировкам других людей можно ставить лайки, репостить',
+    title: 'Мобильное приложение для тренировок по футболу',
+    date: '27.11.2020'
+  },
+  {
+    id: 2,
+    content: 'Очень длинное название Вот тут список будет: Список Лист Кучерявый А тут я буду писать жирным, а нет - курсивом',
+    title: 'Просто очень длинное название, чтобы показать вам как это выглядит',
+    date: '13.07.2022'
+  }
+]
 
 const MyIdeasTab = () => {
+  const theme = useTheme<Theme>()
   return (
-    <View style={styles.container}>
-      <Card />
-      <Card text="akadskds asdsd"/>
-      {/* <Card /> */}
-      <Card />
-    </View>
+    <ScrollView style={{
+      width: Dimensions.get('window').width,
+      marginTop: theme.spacing.m,
+      paddingTop: theme.spacing.m,
+      borderTopWidth: 1,
+      borderTopColor: theme.colors.mainSubBackground
+    }}>
+      <View style={styles.container}>
+        {ideas.map(idea => (
+          <Card key={idea.id} {...idea} />
+        ))}
+      </View>
+    </ScrollView>
   )
 }
 
@@ -19,9 +50,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 1,
+    paddingHorizontal: theme.spacing.xs,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'stretch',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   }
 })

@@ -31,6 +31,7 @@ const theme = createTheme({
     black: '#000'
   },
   spacing: {
+    ss: 4,
     s: 8,
     xs: 12,
     m: 16,
@@ -60,6 +61,16 @@ const theme = createTheme({
       fontFamily: 'Inter-Regular',
       fontSize: 12,
       color: 'mainText'
+    },
+    cardTitle: {
+      fontFamily: 'Inter-Bold',
+      fontSize: 12,
+      color: 'mainText'
+    },
+    cardDate: {
+      fontFamily: 'Inter-Regular',
+      fontSize: 10,
+      color: 'supportText'
     },
     defaults: {
       fontFamily: 'Inter-Regular',

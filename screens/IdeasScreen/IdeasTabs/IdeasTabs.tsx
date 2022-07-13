@@ -27,7 +27,7 @@ const IdeasTabs = () => {
           borderRadius: 25,
           justifyContent: 'center',
           alignSelf: 'center',
-          marginVertical: theme.spacing.xl,
+          marginTop: theme.spacing.xl,
           backgroundColor: theme.colors.mainSubBackground,
           elevation: 0, // remove shadow on Android
           shadowOpacity: 0, // remove shadow on iOS
@@ -59,8 +59,7 @@ const IdeasTabs = () => {
         }
       }}
       sceneContainerStyle={{
-        backgroundColor: 'rgba(0,0,0,0)',
-        paddingHorizontal: HORIZONTAL_MARGIN
+        backgroundColor: 'rgba(0,0,0,0)'
       }}
     >
       <TopTab.Screen name="Мои идеи" component={MyIdeasTab}/>
