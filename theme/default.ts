@@ -25,6 +25,8 @@ const theme = createTheme({
     shadow: palette.black,
     accentShadow: palette.blue,
 
+    accent: palette.blue,
+
     heroColor: palette.white,
     heroShadow: palette.black,
 
