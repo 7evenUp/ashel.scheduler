@@ -17,7 +17,7 @@ const NAV_WIDTH = width - HORIZONTAL_MARGIN * 2
 const NAV_WIDTH_WITH_PADDING = NAV_WIDTH - HORIZONTAL_PADDING * 2
 const NAV_TAB_WIDTH = NAV_WIDTH_WITH_PADDING / AMOUNT_OF_ROUTES
 
-const IdeasTabs = () => {
+export const IdeasTabs = () => {
   const theme = useTheme<Theme>()
   return (
     <TopTab.Navigator
@@ -69,7 +69,3 @@ const IdeasTabs = () => {
     </TopTab.Navigator>
   )
 }
-
-export default IdeasTabs
-
-const styles = StyleSheet.create({})
