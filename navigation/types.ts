@@ -31,6 +31,13 @@ export type IdeasTabRoutes = {
   New: undefined;
 }
 
+export type GoalsTabRoutes = {
+  Day: undefined;
+  Week: undefined;
+  Month: undefined;
+  Year: undefined;
+}
+
 // export type WorkoutTabRoutes = {
 //   Collections: undefined;
 //   SkillBook: undefined;

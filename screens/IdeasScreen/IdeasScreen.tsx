@@ -28,8 +28,4 @@ const styles = StyleSheet.create({
   header: {
     alignItems: 'center'
   },
-  text: {
-    color: 'black',
-    fontSize: 24
-  }
 })
