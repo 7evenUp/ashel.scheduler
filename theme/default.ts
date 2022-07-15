@@ -90,17 +90,17 @@ const theme = createTheme({
     },
     todoItem: {
       fontFamily: 'Inter-Regular',
-      fontSize: 14,
+      fontSize: 16,
       color: 'mainText'
     },
     todoItemCompleted: {
       fontFamily: 'Inter-Regular',
-      fontSize: 14,
+      fontSize: 16,
       color: 'supportText'
     },
     todoItemCanceled: {
       fontFamily: 'Inter-Regular',
-      fontSize: 14,
+      fontSize: 16,
       color: 'supportText',
       textDecorationLine: 'line-through'
     },

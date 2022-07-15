@@ -3,30 +3,27 @@ import React, { useState } from 'react'
 import { Box, Text, Theme } from '../../theme/default'
 import { AntDesign } from '@expo/vector-icons'
 import { useTheme } from '@shopify/restyle'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 
 type TodoItemProps = {
-  completedProp?: boolean
-  canceledProp?: boolean
+  text: string
+  statusProp?: 'completed' | 'canceled' | undefined
 }
 
 const { width } = Dimensions.get('window')
-const ICON_SIZE = 18
+const ICON_SIZE = 20
 
-const TodoItem = ({completedProp, canceledProp}: TodoItemProps) => {
-  const [completed, setCompleted] = useState(completedProp)
-  const [canceled, setCanceled] = useState(canceledProp)
+const TodoItem = ({statusProp, text}: TodoItemProps) => {
+  const [status, setStatus] = useState(statusProp)
+  // const [completed, setCompleted] = useState(completedProp)
+  // const [canceled, setCanceled] = useState(canceledProp)
   
   const theme = useTheme<Theme>()
   return (
     <Pressable
       onPress={() => {
-        if (canceled) {
-          setCanceled(false)
-        } else {
-          setCompleted(!completed)
-        }
-        
+        if (status === 'canceled') setStatus(undefined)
+        else if (status === 'completed') setStatus(undefined)
+        else setStatus('completed')
       }}
       style={({pressed}) => [
         {
@@ -45,15 +42,15 @@ const TodoItem = ({completedProp, canceledProp}: TodoItemProps) => {
         paddingHorizontal='xs'
       >
         {
-          completed ? <AntDesign name="checkcircle" size={ICON_SIZE} color={theme.colors.green} /> :
-          canceled ? <AntDesign name="closecircle" size={ICON_SIZE} color={theme.colors.red} /> :
+          status === 'completed' ? <AntDesign name="checkcircle" size={ICON_SIZE} color={theme.colors.green} /> :
+          status === 'canceled' ? <AntDesign name="closecircle" size={ICON_SIZE} color={theme.colors.red} /> :
           <Box style={styles.emptyTodoIcon} borderColor='todoBorder' />
         }
-        <Text variant={completed ? "todoItemCompleted" : canceled ? "todoItemCanceled" : "todoItem"} ml="m">TodoItem</Text>
-        { !completed && !canceled && (
+        <Text variant={status === 'completed' ? "todoItemCompleted" : status === 'canceled' ? "todoItemCanceled" : "todoItem"} ml="m">{text}</Text>
+        { status !== 'completed' && status !== 'canceled' && (
           <Pressable
             onPress={() => {
-              setCanceled(true)
+              setStatus('canceled')
             }}
             style={({pressed}) => [
               {

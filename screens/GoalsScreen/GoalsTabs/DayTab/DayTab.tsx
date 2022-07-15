@@ -3,7 +3,7 @@ import React from 'react'
 import { Box, Text, Theme } from '../../../../theme/default'
 import { AntDesign } from '@expo/vector-icons'
 import { useTheme } from '@shopify/restyle'
-import { TouchableNativeFeedback, TouchableOpacity } from 'react-native-gesture-handler'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { TodoItem } from '../../../../components'
 
 const DayTab = () => {
@@ -19,9 +19,9 @@ const DayTab = () => {
           <AntDesign name="pluscircle" size={24} color={theme.colors.accent} style={{top: 0}} />
         </TouchableOpacity>
       </Box>
-      <TodoItem />
-      <TodoItem completedProp={true} />
-      <TodoItem canceledProp={true} />
+      <TodoItem text='Купить молоко' />
+      <TodoItem text='Сыграть в видеоигры' statusProp='canceled' />
+      <TodoItem text='Отнести диплом в химчистку' statusProp='completed' />
     </Box>
   )
 }
