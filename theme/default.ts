@@ -1,4 +1,4 @@
-import { createText, createBox, createTheme, shadow } from '@shopify/restyle'
+import { createText, createBox, createTheme } from '@shopify/restyle'
 
 export const palette = {
   blue: '#7DD0FF',
@@ -26,9 +26,13 @@ const theme = createTheme({
     accentShadow: palette.blue,
 
     accent: palette.blue,
+    red: palette.red,
+    green: palette.green,
 
     heroColor: palette.white,
     heroShadow: palette.black,
+
+    todoBorder: palette.grey,
 
     black: '#000'
   },
@@ -73,6 +77,32 @@ const theme = createTheme({
       fontFamily: 'Inter-Regular',
       fontSize: 10,
       color: 'supportText'
+    },
+    goalsTitle: {
+      fontFamily: 'Inter-Regular',
+      fontSize: 24,
+      color: 'mainText'
+    },
+    goalsDate: {
+      fontFamily: 'Inter-Regular',
+      fontSize: 10,
+      color: 'supportText'
+    },
+    todoItem: {
+      fontFamily: 'Inter-Regular',
+      fontSize: 14,
+      color: 'mainText'
+    },
+    todoItemCompleted: {
+      fontFamily: 'Inter-Regular',
+      fontSize: 14,
+      color: 'supportText'
+    },
+    todoItemCanceled: {
+      fontFamily: 'Inter-Regular',
+      fontSize: 14,
+      color: 'supportText',
+      textDecorationLine: 'line-through'
     },
     defaults: {
       fontFamily: 'Inter-Regular',
