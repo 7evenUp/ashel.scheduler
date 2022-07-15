@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { BackgroundClipPath } from '../../components'
+import { BackgroundClipPath, FloatingActionButton } from '../../components'
 import { palette, Text } from '../../theme/default'
 import { GoalsTabs } from './GoalsTabs'
 
@@ -15,6 +15,7 @@ const GoalsScreen = () => {
         </View>
         <GoalsTabs />
       </SafeAreaView>
+      <FloatingActionButton onPress={() => console.log('Create new')} />
     </>
   )
 }
