@@ -16,7 +16,7 @@ const DayTab = () => {
           <Text variant={"goalsDate"}>15.07.2022</Text>
         </Box>
         <TouchableOpacity onPress={() => console.log('PRESSED')}>
-          <AntDesign name="pluscircle" size={24} color={theme.colors.accent} style={{top: 0}} />
+          <AntDesign name="pluscircle" size={30} color={theme.colors.accent} />
         </TouchableOpacity>
       </Box>
       <TodoItem text='Купить молоко' />

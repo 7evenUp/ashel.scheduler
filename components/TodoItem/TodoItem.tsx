@@ -10,7 +10,7 @@ type TodoItemProps = {
 }
 
 const { width } = Dimensions.get('window')
-const ICON_SIZE = 20
+const ICON_SIZE = 22
 
 const TodoItem = ({statusProp, text}: TodoItemProps) => {
   const [status, setStatus] = useState(statusProp)
