@@ -5,10 +5,13 @@ import ContextProvider from './theme/ContextProvider'
 import { palette } from './theme/default'
 import Theme from './theme/Theme'
 import { useFonts } from 'expo-font'
+import { store } from './store/store'
+import { Provider } from 'react-redux'
 
 // 1. Complete theme            |+|
 // 2. Create Setting Screen     |+|
 // 3. Create Top Tabs Navigator |+|
+
 
 const fonts = {
   'Inter-Regular': require('./assets/fonts/Inter-Regular.ttf'),
@@ -23,11 +26,13 @@ export default function App() {
 
   return (
     <ContextProvider>
-      <Theme>
-        <SafeAreaProvider>
-          <AppNavigator />
-        </SafeAreaProvider>
-      </Theme>
+      <Provider store={store}>
+        <Theme>
+          <SafeAreaProvider>
+            <AppNavigator />
+          </SafeAreaProvider>
+        </Theme>
+      </Provider>
     </ContextProvider>
   )
 }

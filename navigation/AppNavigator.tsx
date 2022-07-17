@@ -6,6 +6,7 @@ import { useTheme } from '@shopify/restyle'
 import { IdeasScreen, GoalsScreen, SettingsScreen } from '../screens'
 import { palette, Theme } from '../theme/default'
 import { AppRoutes } from './types'
+import AuthStackRoutes from '../screens/Auth'
 
 const Tab = createBottomTabNavigator<AppRoutes>()
 
@@ -63,7 +64,8 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={(props) => ({ headerShown: false })}>
-        <Stack.Screen name="App" component={AppTabs}/>
+        <Stack.Screen name="App" component={AppTabs} />
+        <Stack.Screen name="Auth" component={AuthStackRoutes} />
       </Stack.Navigator>
     </NavigationContainer>
   )
