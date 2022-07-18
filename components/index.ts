@@ -2,3 +2,4 @@ export { default as BackgroundClipPath } from './BackgroundClipPath/BackgroundCl
 export { default as TodoItem } from './TodoItem/TodoItem'
 export { default as TodoPopup } from './TodoPopup/TodoPopup'
 export { default as FloatingActionButton } from './FloatingActionButton/FloatingActionButton'
+export { default as AppLoading } from './AppLoading/AppLoading'

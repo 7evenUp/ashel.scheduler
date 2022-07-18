@@ -7,11 +7,31 @@ import { IdeasScreen, GoalsScreen, SettingsScreen } from '../screens'
 import { palette, Theme } from '../theme/default'
 import { AppRoutes } from './types'
 import AuthStackRoutes from '../screens/Auth'
+import { useEffect } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Tab = createBottomTabNavigator<AppRoutes>()
 
 const AppTabs = () => {
   const theme = useTheme<Theme>()
+  useEffect(() => {
+    const getAllKeys = async () => {
+      let keys: readonly string[] = []
+      try {
+        keys = await AsyncStorage.getAllKeys()
+      } catch(e) {
+        console.error(e)
+      }
+
+      console.log(await AsyncStorage.getItem("persist:root"))
+    
+      console.log(keys)
+      // example console.log result:
+      // ['@MyApp_user', '@MyApp_key']
+    }
+
+    getAllKeys()
+  }, [])
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

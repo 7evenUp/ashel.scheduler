@@ -5,8 +5,10 @@ import ContextProvider from './theme/ContextProvider'
 import { palette } from './theme/default'
 import Theme from './theme/Theme'
 import { useFonts } from 'expo-font'
-import { store } from './store/store'
+import { persistor, store } from './store/store'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import { AppLoading } from './components'
 
 // 1. Complete theme            |+|
 // 2. Create Setting Screen     |+|
@@ -27,11 +29,14 @@ export default function App() {
   return (
     <ContextProvider>
       <Provider store={store}>
-        <Theme>
-          <SafeAreaProvider>
-            <AppNavigator />
-          </SafeAreaProvider>
-        </Theme>
+        <PersistGate loading={<AppLoading />} persistor={persistor} >
+          <Theme>
+            <SafeAreaProvider>
+              <AppNavigator />
+            </SafeAreaProvider>
+          </Theme>
+        </PersistGate>
+        
       </Provider>
     </ContextProvider>
   )

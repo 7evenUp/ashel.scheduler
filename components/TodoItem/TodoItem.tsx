@@ -50,6 +50,7 @@ const TodoItem = ({id, title, status}: TodoItemProps) => {
             ? "todoItemCanceled" : "todoItem"
           }
           ml="m"
+          style={{marginRight: theme.spacing.xs * 2 + ICON_SIZE + theme.spacing.m}}
         >{title}</Text>
         { status !== 'completed' && status !== 'canceled' && (
           <Pressable
