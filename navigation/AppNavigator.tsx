@@ -58,15 +58,15 @@ const AppTabs = () => {
   )
 }
 
-const Stack = createStackNavigator()
+const RootStack = createStackNavigator()
 
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={(props) => ({ headerShown: false })}>
-        <Stack.Screen name="App" component={AppTabs} />
-        <Stack.Screen name="Auth" component={AuthStackRoutes} />
-      </Stack.Navigator>
+      <RootStack.Navigator screenOptions={(props) => ({ headerShown: false })}>
+        <RootStack.Screen name="App" component={AppTabs} />
+        <RootStack.Screen name="Auth" component={AuthStackRoutes} />
+      </RootStack.Navigator>
     </NavigationContainer>
   )
 }
