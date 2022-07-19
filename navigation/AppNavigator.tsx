@@ -26,8 +26,6 @@ const AppTabs = () => {
       console.log(await AsyncStorage.getItem("persist:root"))
     
       console.log(keys)
-      // example console.log result:
-      // ['@MyApp_user', '@MyApp_key']
     }
 
     getAllKeys()
@@ -49,6 +47,7 @@ const AppTabs = () => {
         backgroundColor: theme.colors.mainBackground,
         flex: 1,
       }}
+      initialRouteName='Goals'
     >
       <Tab.Screen
         name='Ideas'
