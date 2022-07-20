@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "ashel_scheduler",
-    "slug": "ashel_scheduler",
-    "version": "1.0.0",
+    "name": "Scheduler",
+    "slug": "ashel-scheduler",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/logo.png",
+        "foregroundImage": "./assets/adaptiveIcon.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.ashel.scheduler"
