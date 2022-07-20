@@ -3,7 +3,7 @@ import { MaterialTopTabNavigationOptions } from '@react-navigation/material-top-
 import { useTheme } from '@shopify/restyle'
 import { Theme } from '../theme/default'
 
-// Хук для корректной настройки стилей для Navigation/MaterialTopTabs
+// Хук для получения стилей для Navigation/MaterialTopTabs
 
 export const useTopTabsScreenOptions = (routesQty: number): MaterialTopTabNavigationOptions => {
   const theme = useTheme<Theme>()

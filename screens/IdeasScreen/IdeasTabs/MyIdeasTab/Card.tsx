@@ -1,7 +1,5 @@
 import { StyleSheet, View } from 'react-native'
-import React from 'react'
-import theme, { Box, Text, Theme } from '../../../../theme/default'
-import { useTheme } from '@shopify/restyle'
+import { Box, Text } from '../../../../theme/default'
 
 type CardProps = {
   content: string,
@@ -10,7 +8,6 @@ type CardProps = {
 }
 
 const Card = ({ content, title, date }: CardProps) => {
-  const theme = useTheme<Theme>()
   const slicedContent = content.length > 170 ? `${content.slice(0, 170)}...` : content
   const slicedTitle = title.length > 40 ? `${title.slice(0, 39)}...` : title
 

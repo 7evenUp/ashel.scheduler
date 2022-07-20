@@ -1,8 +1,7 @@
-import { Dimensions, ScrollView, StyleSheet, View } from 'react-native'
-import React from 'react'
+import { Dimensions, ScrollView, StyleSheet } from 'react-native'
 import Card from './Card'
 import { useTheme } from '@shopify/restyle'
-import theme, { Theme } from '../../../../theme/default'
+import { Box, Theme } from '../../../../theme/default'
 
 const ideas = [
   {
@@ -27,6 +26,7 @@ const ideas = [
 
 const MyIdeasTab = () => {
   const theme = useTheme<Theme>()
+
   return (
     <ScrollView style={{
       width: Dimensions.get('window').width,
@@ -35,11 +35,14 @@ const MyIdeasTab = () => {
       borderTopWidth: 1,
       borderTopColor: theme.colors.mainSubBackground
     }}>
-      <View style={styles.container}>
+      <Box
+        paddingHorizontal='xs'
+        style={styles.container}
+      >
         {ideas.map(idea => (
           <Card key={idea.id} {...idea} />
         ))}
-      </View>
+      </Box>
     </ScrollView>
   )
 }
@@ -50,7 +53,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 1,
-    paddingHorizontal: theme.spacing.xs,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'stretch',

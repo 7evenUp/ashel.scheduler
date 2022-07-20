@@ -1,8 +1,8 @@
 import { Dimensions, StyleSheet, Text } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
-import { Box, Theme } from '../../theme/default'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { useTheme } from '@shopify/restyle'
+import { Box, Theme } from '../../theme/default'
 import { useDispatch } from 'react-redux'
 import { add } from '../../store/goalsSlice'
 

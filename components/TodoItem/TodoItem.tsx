@@ -1,20 +1,17 @@
 import { Dimensions, StyleSheet, Pressable } from 'react-native'
-import React from 'react'
-import { Box, Text, Theme } from '../../theme/default'
 import { AntDesign } from '@expo/vector-icons'
 import { useTheme } from '@shopify/restyle'
-import { changeStatus, GoalType } from '../../store/goalsSlice'
 import { useDispatch } from 'react-redux'
+import { changeStatus, GoalType } from '../../store/goalsSlice'
+import { Box, Text, Theme } from '../../theme/default'
 
 const { width } = Dimensions.get('window')
 const ICON_SIZE = 22
 
-type TodoItemProps = { id: number } & GoalType
-
-const TodoItem = ({id, title, status}: TodoItemProps) => {
+const TodoItem = ({id, title, status}: GoalType) => {
   const dispatch = useDispatch()
-  
   const theme = useTheme<Theme>()
+
   return (
     <Pressable
       onPress={() => {
@@ -45,22 +42,17 @@ const TodoItem = ({id, title, status}: TodoItemProps) => {
         }
         <Text
           variant={
-            status === 'completed'
-            ? "todoItemCompleted" : status === 'canceled'
-            ? "todoItemCanceled" : "todoItem"
+            status === 'completed' ? "todoItemCompleted" :
+            status === 'canceled' ? "todoItemCanceled" : "todoItem"
           }
           ml="m"
           style={{marginRight: theme.spacing.xs * 2 + ICON_SIZE + theme.spacing.m}}
         >{title}</Text>
-        { status !== 'completed' && status !== 'canceled' && (
+        { status === undefined && (
           <Pressable
-            onPress={() => {
-              dispatch(changeStatus({id, status: 'canceled'}))
-            }}
+            onPress={() => dispatch(changeStatus({id, status: 'canceled'}))}
             style={({pressed}) => [
-              {
-                opacity: pressed ? 0.4 : 1
-              },
+              { opacity: pressed ? 0.4 : 1 },
               styles.closeBtn
             ]}>
             <AntDesign name="close" size={ICON_SIZE} color={theme.colors.red} />

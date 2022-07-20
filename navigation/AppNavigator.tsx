@@ -29,6 +29,7 @@ const AppTabs = () => {
 
     getAllKeys()
   }, [])
+  
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

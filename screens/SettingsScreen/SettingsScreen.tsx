@@ -1,17 +1,14 @@
-import { Button, Dimensions, StyleSheet, Switch } from 'react-native'
-import React from 'react'
+import { Button, Dimensions, Switch } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Box, Text, Theme } from '../../theme/default'
-import { useNavigation } from '@react-navigation/native'
-import { persistor, RootState } from '../../store/store'
 import { useDispatch, useSelector } from 'react-redux'
+import { persistor, RootState } from '../../store/store'
 import { changeTheme } from '../../store/themeSlice'
 import { useTheme } from '@shopify/restyle'
+import { Box, Text, Theme } from '../../theme/default'
 
 const {width} = Dimensions.get('window')
 
 const SettingsScreen = () => {
-  const nav = useNavigation()
   const theme = useTheme<Theme>()
   const dispatch = useDispatch()
   const isLightTheme = useSelector((state: RootState) => state.theme.isLight)
@@ -48,7 +45,3 @@ const SettingsScreen = () => {
 }
 
 export default SettingsScreen
-
-const styles = StyleSheet.create({
-  
-})

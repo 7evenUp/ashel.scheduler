@@ -21,15 +21,14 @@ export default function App() {
   if (!fontsLoaded) return null
 
   return (
-      <Provider store={store}>
-        <PersistGate loading={<AppLoading />} persistor={persistor} >
-          <ThemeProvider>
-            <SafeAreaProvider>
-              <AppNavigator />
-            </SafeAreaProvider>
-          </ThemeProvider>
-        </PersistGate>
-        
-      </Provider>
+    <Provider store={store}>
+      <PersistGate loading={<AppLoading />} persistor={persistor} >
+        <ThemeProvider>
+          <SafeAreaProvider>
+            <AppNavigator />
+          </SafeAreaProvider>
+        </ThemeProvider>
+      </PersistGate>
+    </Provider>
   )
 }
