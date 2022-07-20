@@ -1,5 +1,5 @@
 import { Button, Dimensions, StyleSheet, Switch } from 'react-native'
-import React, { useContext } from 'react'
+import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Box, Text, Theme } from '../../theme/default'
 import { useNavigation } from '@react-navigation/native'
@@ -37,7 +37,6 @@ const SettingsScreen = () => {
             trackColor={{false: theme.colors.mainBackground, true: theme.colors.accentLight}}
           />
         </Box>
-        <Button title="Go to Auth" onPress={() => nav.navigate('Auth')} />
         <Button title="Удалить кэш" onPress={async () => {
           console.log('Clicked')
           await persistor.purge()

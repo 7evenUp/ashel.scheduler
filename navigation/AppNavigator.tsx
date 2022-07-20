@@ -6,7 +6,6 @@ import { useTheme } from '@shopify/restyle'
 import { IdeasScreen, GoalsScreen, SettingsScreen } from '../screens'
 import { palette, Theme } from '../theme/default'
 import { AppRoutes } from './types'
-import AuthStackRoutes from '../screens/Auth'
 import { useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
@@ -84,7 +83,6 @@ const AppNavigator = () => {
     <NavigationContainer>
       <RootStack.Navigator screenOptions={(props) => ({ headerShown: false })}>
         <RootStack.Screen name="App" component={AppTabs} />
-        <RootStack.Screen name="Auth" component={AuthStackRoutes} />
       </RootStack.Navigator>
     </NavigationContainer>
   )
