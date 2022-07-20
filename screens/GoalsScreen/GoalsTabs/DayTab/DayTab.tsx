@@ -21,7 +21,7 @@ const DayTab = () => {
       <Box flex={1} paddingHorizontal="xs" pt={"xl"}>
         <Box flexDirection="row" alignItems="center" justifyContent="space-between" mb='s'>
           <Box flexDirection="row" alignItems="baseline">
-            <Text variant={"goalsTitle"} mr="ss">Сегодня</Text>
+            <Text variant={"goalsTitle"} mr="s">Сегодня</Text>
             <Text variant={"goalsDate"}>{date}</Text>
           </Box>
           <TouchableOpacity onPress={() => setPopupOpened(true)}>
