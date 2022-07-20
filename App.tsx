@@ -1,19 +1,13 @@
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import * as NavigationBar from 'expo-navigation-bar'
 import AppNavigator from './navigation/AppNavigator'
-import ContextProvider from './theme/ContextProvider'
 import { palette } from './theme/default'
-import Theme from './theme/Theme'
+import ThemeProvider from './theme/ThemeProvider'
 import { useFonts } from 'expo-font'
 import { persistor, store } from './store/store'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { AppLoading } from './components'
-
-// 1. Complete theme            |+|
-// 2. Create Setting Screen     |+|
-// 3. Create Top Tabs Navigator |+|
-
 
 const fonts = {
   'Inter-Regular': require('./assets/fonts/Inter-Regular.ttf'),
@@ -27,17 +21,15 @@ export default function App() {
   if (!fontsLoaded) return null
 
   return (
-    <ContextProvider>
       <Provider store={store}>
         <PersistGate loading={<AppLoading />} persistor={persistor} >
-          <Theme>
+          <ThemeProvider>
             <SafeAreaProvider>
               <AppNavigator />
             </SafeAreaProvider>
-          </Theme>
+          </ThemeProvider>
         </PersistGate>
         
       </Provider>
-    </ContextProvider>
   )
 }

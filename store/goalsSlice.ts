@@ -18,7 +18,7 @@ const initialState: GoalsState = {
 }
 
 export const goalsSlice = createSlice({
-  name: 'counter',
+  name: 'goals',
   initialState,
   reducers: {
     add: (state, action: PayloadAction<string>) => {

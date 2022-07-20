@@ -1,26 +1,49 @@
-import { Button, StyleSheet, Switch } from 'react-native'
+import { Button, Dimensions, StyleSheet, Switch } from 'react-native'
 import React, { useContext } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { ThemeContext } from '../../theme/ContextProvider'
-import { Text } from '../../theme/default'
+import { Box, Text, Theme } from '../../theme/default'
 import { useNavigation } from '@react-navigation/native'
-import { persistor } from '../../store/store'
+import { persistor, RootState } from '../../store/store'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeTheme } from '../../store/themeSlice'
+import { useTheme } from '@shopify/restyle'
+
+const {width} = Dimensions.get('window')
 
 const SettingsScreen = () => {
-  const context = useContext(ThemeContext)
   const nav = useNavigation()
+  const theme = useTheme<Theme>()
+  const dispatch = useDispatch()
+  const isLightTheme = useSelector((state: RootState) => state.theme.isLight)
+
   return (
     <SafeAreaView>
-      <Text variant='header'>Settings</Text>
-      <Switch
-        value={context.isLightTheme}
-        onValueChange={(value: boolean) => context.changeTheme(value)}
-      />
-      <Button title="Go to Auth" onPress={() => nav.navigate('Auth')} />
-      <Button title="Удалить кэш" onPress={async () => {
-        console.log('Clicked')
-        await persistor.purge()
+      <Box alignItems='center'>
+        <Text variant='header'>Настройки</Text>
+        <Box
+          backgroundColor='mainSubBackground'
+          flexDirection='row'
+          justifyContent='space-between'
+          alignItems='center'
+          width={width}
+          paddingHorizontal='xs'
+          marginVertical='m'
+        >
+          <Text>Тема приложения: {isLightTheme ? 'Светлая' : 'Тёмная'}</Text>
+          <Switch
+            value={isLightTheme}
+            onValueChange={(value: boolean) => { dispatch(changeTheme()) }}
+            thumbColor={isLightTheme ? theme.colors.accent : theme.colors.mainText}
+            trackColor={{false: theme.colors.mainBackground, true: theme.colors.accentLight}}
+          />
+        </Box>
+        <Button title="Go to Auth" onPress={() => nav.navigate('Auth')} />
+        <Button title="Удалить кэш" onPress={async () => {
+          console.log('Clicked')
+          await persistor.purge()
       }} />
+      </Box>
+      
     </SafeAreaView>
   )
 }

@@ -2,6 +2,7 @@ import { createText, createBox, createTheme } from '@shopify/restyle'
 
 export const palette = {
   blue: '#7DD0FF',
+  blueLight: '#BAE0F5',
   red: '#FF7D7E',
   green: '#9FFF7D',
   yellow: '#FEF279',
@@ -26,6 +27,7 @@ const theme = createTheme({
     accentShadow: palette.blue,
 
     accent: palette.blue,
+    accentLight: palette.blueLight,
     red: palette.red,
     green: palette.green,
 

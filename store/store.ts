@@ -11,6 +11,7 @@ import {
   REGISTER
 } from 'redux-persist'
 import goalsReducer from './goalsSlice'
+import themeReducer from './themeSlice'
 
 const persistConfig = {
   key: 'root',
@@ -19,7 +20,8 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-  goals: goalsReducer
+  goals: goalsReducer,
+  theme: themeReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
