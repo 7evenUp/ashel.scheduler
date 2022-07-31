@@ -1,10 +1,11 @@
 import { Button, Dimensions, Switch } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useDispatch, useSelector } from 'react-redux'
-import { persistor, RootState } from '../../store/store'
+import { RootState } from '../../store/store'
 import { changeTheme } from '../../store/themeSlice'
 import { useTheme } from '@shopify/restyle'
 import { Box, Text, Theme } from '../../theme/default'
+import { deleteAll } from '../../store/goalsSlice'
 
 const {width} = Dimensions.get('window')
 
@@ -34,10 +35,7 @@ const SettingsScreen = () => {
             trackColor={{false: theme.colors.mainBackground, true: theme.colors.accentLight}}
           />
         </Box>
-        <Button title="Удалить кэш" onPress={async () => {
-          console.log('Clicked')
-          await persistor.purge()
-      }} />
+        <Button title="Удалить кэш" onPress={() => dispatch(deleteAll())} />
       </Box>
       
     </SafeAreaView>

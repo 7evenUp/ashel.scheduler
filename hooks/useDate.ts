@@ -1,6 +1,10 @@
 const dayToStr = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
 
-export const useDate = () => {
+
+/**
+ * @returns {string} Returns string like 'Sunday 31.07'
+ */
+export const useDate = (): string => {
   const currentDate = new Date()
   let weekDayNum = currentDate.getDay()
   let day = currentDate.getDate()

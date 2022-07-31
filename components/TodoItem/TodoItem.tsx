@@ -8,12 +8,15 @@ import { Box, Text, Theme } from '../../theme/default'
 const { width } = Dimensions.get('window')
 const ICON_SIZE = 22
 
-const TodoItem = ({id, title, status}: GoalType) => {
+type TodoItemProps = { disabled?: boolean } & GoalType
+
+const TodoItem = ({id, title, status, disabled}: TodoItemProps) => {
   const dispatch = useDispatch()
   const theme = useTheme<Theme>()
 
   return (
     <Pressable
+      disabled={disabled}
       onPress={() => {
         if (status === 'canceled') dispatch(changeStatus({id, status: undefined}))
         else if (status === 'completed') dispatch(changeStatus({id, status: undefined}))

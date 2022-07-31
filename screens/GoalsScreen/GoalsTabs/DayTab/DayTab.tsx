@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { AntDesign } from '@expo/vector-icons'
 import { useTheme } from '@shopify/restyle'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { Box, Text, Theme } from '../../../../theme/default'
 import { TodoItem, TodoPopup } from '../../../../components'
 import { RootState } from '../../../../store/store'
 import { useDate } from '../../../../hooks/useDate'
+import { add } from '../../../../store/goalsSlice'
 
 const DayTab = () => {
   const theme = useTheme<Theme>()
@@ -18,20 +19,37 @@ const DayTab = () => {
   return (
     <>
       {popupOpened && <TodoPopup closePopup={() => setPopupOpened(false)} />}
+      <ScrollView>
       <Box flex={1} paddingHorizontal="xs" pt={"xl"}>
-        <Box flexDirection="row" alignItems="center" justifyContent="space-between" mb='s'>
-          <Box flexDirection="row" alignItems="baseline">
-            <Text variant={"goalsTitle"} mr="s">Сегодня</Text>
-            <Text variant={"goalsDate"}>{date}</Text>
+        <Box>
+          <Box flexDirection="row" alignItems="center" justifyContent="space-between" mb='s'>
+            <Box flexDirection="row" alignItems="baseline">
+              <Text variant={"goalsTitle"} mr="s">Сегодня</Text>
+              <Text variant={"goalsDate"}>{date}</Text>
+            </Box>
+            <TouchableOpacity onPress={() => setPopupOpened(true)}>
+              <AntDesign name="pluscircle" size={30} color={theme.colors.accent} />
+            </TouchableOpacity>
           </Box>
-          <TouchableOpacity onPress={() => setPopupOpened(true)}>
-            <AntDesign name="pluscircle" size={30} color={theme.colors.accent} />
-          </TouchableOpacity>
+          {[...goals[date]].reverse().map(goal => (
+            <TodoItem key={goal.id} id={goal.id} title={goal.title} status={goal.status} />
+          ))}
         </Box>
-        {[...goals].reverse().map(goal => (
-          <TodoItem key={goal.id} id={goal.id} title={goal.title} status={goal.status} />
-        ))}
+        <Box>
+          {Object.entries(goals).map((item, i) => {
+            if (item[0] !== date) return (
+              <Box key={i}>
+                <Text variant={"goalsTitle"} marginVertical='s'>{item[0]}</Text>
+                {item[1].map(goal => (
+                  <TodoItem key={goal.id} id={goal.id} title={goal.title} status={goal.status} disabled />
+                ))}
+              </Box>
+            )
+          })}
+        </Box>
       </Box>
+      </ScrollView>
+      
     </>
   )
 }

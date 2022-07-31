@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit'
 import {
   persistStore,
@@ -16,7 +17,7 @@ import themeReducer from './themeSlice'
 const persistConfig = {
   key: 'root',
   version: 1,
-  storage: AsyncStorage
+  storage: AsyncStorage,
 }
 
 const rootReducer = combineReducers({
@@ -27,7 +28,7 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) => 
     getDefaultMiddleware({
       serializableCheck: {
@@ -36,7 +37,7 @@ export const store = configureStore({
     })
 })
 
-export const persistor = persistStore(store)
+// export const persistor = persistStore(store)
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
