@@ -22,13 +22,13 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      {/* <PersistGate loading={<AppLoading />} persistor={persistor} > */}
+      <PersistGate loading={<AppLoading />} persistor={persistor} >
         <ThemeProvider>
           <SafeAreaProvider>
             <AppNavigator />
           </SafeAreaProvider>
         </ThemeProvider>
-      {/* </PersistGate> */}
+      </PersistGate>
     </Provider>
   )
 }

@@ -4,15 +4,23 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 import { useTheme } from '@shopify/restyle'
 import { IdeasScreen, GoalsScreen, SettingsScreen } from '../screens'
-import { palette, Theme } from '../theme/default'
+import { palette, Text, Theme } from '../theme/default'
 import { AppRoutes } from './types'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useDispatch, useSelector } from 'react-redux'
+import { useDate } from '../hooks/useDate'
+import { RootState } from '../store/store'
+import { createNewDay } from '../store/goalsSlice'
 
 const Tab = createBottomTabNavigator<AppRoutes>()
 
 const AppTabs = () => {
+  const [loading, setLoading] = useState(true)
   const theme = useTheme<Theme>()
+  const dispatch = useDispatch()
+  const todayStr = useDate()
+  const goals = useSelector((state: RootState) => state.goals.value)
   useEffect(() => {
     const getAllKeys = async () => {
       let keys: readonly string[] = []
@@ -21,14 +29,30 @@ const AppTabs = () => {
       } catch(e) {
         console.error(e)
       }
-
+      console.log('ASYNC STORAGE GET ITEM')
       console.log(await AsyncStorage.getItem("persist:root"))
     
+      console.log('ASYNC STORAGE KEYS')
       console.log(keys)
     }
 
+    console.log('=============== App is Loading ===============')
+
+    // if (todayStr in goals)
+    if (goals.hasOwnProperty(todayStr)) {
+      console.log('содержит')
+    } else {
+      dispatch(createNewDay())
+      console.log('Ne soderzhit')
+    }
+
+    console.log('=============== App is Loaded ===============')
+
     getAllKeys()
+    setLoading(false)
   }, [])
+
+  if (loading) return null
   
   return (
     <Tab.Navigator
